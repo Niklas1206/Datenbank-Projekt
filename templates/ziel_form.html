@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Neues Ziel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>{{ 'Abteilungs-Ziel hinzufügen' if ziel else 'Neues Ziel hinzufügen' }}</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="abteilungs_id">Abteilung</label>
+                <select name="abteilungs_id" class="form-control" required>
+                    {% for abteilung in abteilungen %}
+                    <option value="{{ abteilung.id }}" {% if ziel and abteilung.id == ziel.abteilungs_id %}selected{% endif %}>
+                        {{ abteilung.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="aussage">Aussage</label>
+                <input type="text" name="aussage" class="form-control" value="{{ ziel.aussage if ziel else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="kriterien">Kriterien</label>
+                <input type="text" name="kriterien" class="form-control" value="{{ ziel.kriterien if ziel else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="bewertung">Bewertung (1-10)</label>
+                <input type="number" name="bewertung" class="form-control" min="1" max="10" value="{{ ziel.bewertung if ziel else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="aenderer">Deine User-ID</label>
+                <input type="text" name="aenderer" class="form-control" value="{{ ziel.aenderer if ziel else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="anregung">Anregung</label>
+                <input type="text" name="anregung" class="form-control" value="{{ ziel.anregung if ziel else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="kommentar">Kommentar</label>
+                <input type="text" name="kommentar" class="form-control" value="{{ ziel.kommentar if ziel else '' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Speichern</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ziel Historie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="container mt-4">
+        <h1>Historie für Ziel: {{ ziel.aussage }}</h1>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary mb-3">Zurück zur Übersicht</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Bewertung</th>
+                    <th>Kriterien</th>
+                    <th>Geändert von</th>
+                    <th>Anregung</th>
+                    <th>Kommentar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eintrag in historie %}
+                <tr>
+                    <td>{{ eintrag.zuletzt_geaendert }}</td>
+                    <td>{{ eintrag.bewertung }}</td>
+                    <td>{{ eintrag.kriterien }}</td>
+                    <td>{{ eintrag.aenderer }}</td>
+                    <td>{{ eintrag.anregung }}</td>
+                    <td>{{ eintrag.kommentar }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
+</body>
+</html>

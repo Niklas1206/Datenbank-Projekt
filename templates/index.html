@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Ziele Übersicht{% endblock %}
+
+{% block content %}
+    <body>
+        <div class="container mt-4">
+            <h1>Ziele Übersicht</h1>
+            <a href="{{ url_for('ziel_neu') }}" class="btn btn-primary mb-3">
+                <i class="fas fa-plus"></i> Neues Ziel
+            </a>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <form method="get" class="form-inline">
+                        <input type="text" name="search" class="form-control mr-2" 
+                            placeholder="Suchen..." value="{{ search_query }}">
+                        
+                        <select name="abteilung" class="form-control mr-2">
+                            <option value="">Alle Abteilungen</option>
+                            {% for abteilung in abteilungen %}
+                            <option value="{{ abteilung.id }}" 
+                                    {% if selected_abteilung|string == abteilung.id|string %}selected{% endif %}>
+                                {{ abteilung.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        
+                        <select name="status" class="form-control mr-2">
+                            <option value="">Status</option>
+                            <option value="gut" {% if selected_status == 'gut' %}selected{% endif %}>Gut (7-10)</option>
+                            <option value="mittel" {% if selected_status == 'mittel' %}selected{% endif %}>Mittel (4-6)</option>
+                            <option value="schlecht" {% if selected_status == 'schlecht' %}selected{% endif %}>Schlecht (1-3)</option>
+                        </select>
+                        
+                        <button type="submit" class="btn btn-primary">Filtern</button>
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary ml-2">Zurücksetzen</a>
+                    </form>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Abteilung</th>
+                        <th>Aussage</th>
+                        <th>Kriterien</th>
+                        <th>
+                            Bewertung
+                            <a href="{{ url_for('index', sort='bewertung', direction='asc' if sort_by == 'bewertung' and sort_direction == 'desc' else 'desc', search=search_query, abteilung=selected_abteilung) }}" class="text-dark">
+                                <i class="fas fa-sort{{ '-up' if sort_by == 'bewertung' and sort_direction == 'asc' else '-down' if sort_by == 'bewertung' and sort_direction == 'desc' else '' }} sort-icon"></i>
+                            </a>
+                        </th>
+                        <th>Letzter Änderer</th>
+                        <th>
+                            Zuletzt geändert
+                            <a href="{{ url_for('index', sort='datum', direction='asc' if sort_by == 'datum' and sort_direction == 'desc' else 'desc', search=search_query, abteilung=selected_abteilung) }}" class="text-dark">
+                                <i class="fas fa-sort{{ '-up' if sort_by == 'datum' and sort_direction == 'asc' else '-down' if sort_by == 'datum' and sort_direction == 'desc' else '' }} sort-icon"></i>
+                            </a>
+                        </th>
+                        <th>Anregung</th>
+                        <th>Kommentar</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ziel in ziele %}
+                    <tr>
+                        <td class="text-muted">{{ ziel.id }}</td>
+                        <td>
+                            <span class="d-flex align-items-center">
+                                <i class="fas fa-building mr-2"></i>
+                                {{ ziel.abteilung.name }}
+                            </span>
+                        </td>
+                        <td><strong>{{ ziel.aussage }}</strong></td>
+                        <td>{{ ziel.kriterien }}</td>
+                        <td>
+                            <span class="bewertung-badge 
+                                {% if ziel.bewertung >= 8 %}bg-success
+                                {% elif ziel.bewertung >= 5 %}bg-warning
+                                {% else %}bg-danger{% endif %}">
+                                {{ ziel.bewertung }}/10
+                            </span>
+                        </td>
+                        <td>{{ ziel.aenderer }}</td>
+                        <td>{{ ziel.zuletzt_geaendert.strftime('%d.%m.%Y') }}</td>
+                        <td class="text-wrap">{{ ziel.anregung }}</td>
+                        <td class="text-wrap">{{ ziel.kommentar }}</td>
+                        <td class="action-buttons">
+                            <div class="d-flex flex-column">
+                                <a href="{{ url_for('ziel_bearbeiten', ziel_id=ziel.id) }}" class="btn btn-warning mb-1">
+                                    <i class="fas fa-edit"></i> Bearbeiten
+                                </a>
+                                <form action="{{ url_for('ziel_loeschen', ziel_id=ziel.id) }}" method="post">
+                                    <button type="submit" class="btn btn-danger mb-1 w-100">
+                                        <i class="fas fa-trash"></i> Löschen
+                                    </button>
+                                </form>
+                                <a href="{{ url_for('sub_ziel_hinzufuegen', ziel_id=ziel.id) }}" class="btn btn-info mb-1">
+                                    <i class="fas fa-level-down-alt"></i> Unterziel
+                                </a>
+                                <a href="{{ url_for('ziel_details', ziel_id=ziel.id) }}" class="btn btn-secondary">
+                                    <i class="fas fa-history"></i> Historie
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

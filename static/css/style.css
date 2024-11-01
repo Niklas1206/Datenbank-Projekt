@@ -1,0 +1,357 @@
+/* Allgemeine Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+}
+
+.btn i {
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.btn-action {
+    margin: 0 2px;
+}
+
+/* Tabellen Styles */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.table td {
+    padding: 1.2rem;
+    vertical-align: middle;
+    border-right: 1px solid #dee2e6;
+    background-color: white;
+}
+
+.table td:last-child {
+    border-right: none;
+}
+
+.table th {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.table th:last-child {
+    border-right: none;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Erste und letzte Zelle in jeder Reihe abrunden */
+.table tbody tr td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.table tbody tr td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Zebra-Striping mit subtilen Farben */
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.sort-icon {
+    margin-left: 5px;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+    font-size: 0.8em;
+}
+
+.sort-icon:hover {
+    opacity: 1;
+}
+
+.table th {
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.table th a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.table th:hover .sort-icon {
+    opacity: 1;
+}
+
+/* Card Styles */
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Dashboard Styles */
+.dashboard-stats {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Navigation Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group label {
+    font-weight: 500;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Custom Badge Colors */
+.badge-score {
+    font-size: 1em;
+    padding: 0.4em 0.6em;
+}
+
+/* Container Styles */
+.container {
+    max-width: 95%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Navbar Container */
+.navbar .container {
+    max-width: 95%;
+    background-color: transparent;
+    box-shadow: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0.5rem;
+}
+
+/* Table Container für bessere Lesbarkeit */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Tabellen-Layout */
+.table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/* Spaltenbreiten optimieren */
+.table td {
+    white-space: nowrap;
+}
+
+.table td:nth-child(3), /* Aussage */
+.table td:nth-child(4) { /* Kriterien */
+    white-space: normal;
+    min-width: 200px;
+}
+
+/* Button-Größen */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    min-width: auto;
+}
+
+/* Button-Farben */
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    border: none;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    border: none;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #bd2130);
+    border: none;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107, #d39e00);
+    border: none;
+    color: #000;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #17a2b8, #117a8b);
+    border: none;
+}
+
+/* Action Buttons Styles */
+.action-buttons {
+    width: 150px;
+    padding: 0.5rem !important;
+}
+
+.action-buttons .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.action-buttons .btn:last-child {
+    margin-bottom: 0;
+}
+
+/* Dashboard Button Style */
+.dashboard-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 25px;
+    font-size: 1.1em;
+    z-index: 1000;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    border: none;
+    color: white;
+}
+
+.dashboard-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    color: white;
+}
+
+/* Table Row Hover Effect */
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease;
+}
+
+/* ID-Zelle */
+.table td:first-child {
+    font-weight: 500;
+    color: #6c757d;
+    width: 80px;
+    text-align: center;
+}
+
+/* Abteilungs-Zelle */
+.table td:nth-child(2) {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Bewertungs-Zelle */
+.table td:nth-child(5) {
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+}
+
+.bewertung-badge {
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+/* Datum-Zelle */
+.table td:last-child {
+    color: #6c757d;
+    font-size: 0.9em;
+    width: 150px;
+}
+
+/* Sort Icon Styles */
+.sort-icon {
+    margin-left: 5px;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+    font-size: 0.8em;
+}
+
+.sort-icon:hover {
+    opacity: 1;
+}
+
+/* Only make sortable columns appear clickable */
+.table th:nth-child(5), /* Bewertung */
+.table th:nth-child(7) { /* Zuletzt geändert */
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.table th:nth-child(5):hover .sort-icon,
+.table th:nth-child(7):hover .sort-icon {
+    opacity: 1;
+}
+
+/* Anregung und Kommentar Zellen */
+.table td:nth-child(5), /* Anregung */
+.table td:nth-child(6) { /* Kommentar */
+    max-width: 200px; /* Maximale Breite für die Zelle */
+    word-wrap: break-word; /* Wörter am Ende der Zeile umbrechen */
+    white-space: normal; /* Zeilenumbruch aktivieren */
+}
